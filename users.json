@@ -1,0 +1,8 @@
+{
+    "usuario.prueba@gmail.com": {
+      "password": "password123"
+    },
+    "otro.usuario@ejemplo.com": {
+      "password": "miClaveSecreta"
+    }
+  }
