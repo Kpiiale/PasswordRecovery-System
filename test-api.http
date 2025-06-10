@@ -1,0 +1,10 @@
+### Solicitar recuperación de contraseña para un usuario existente
+POST http://localhost:5001/api/recover-password
+Content-Type: application/json
+
+{
+  "email": "usuario.prueba@gmail.com"
+}
+
+### Probar el endpoint de salud del servicio
+GET http://localhost:5001/health
