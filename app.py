@@ -1,19 +1,18 @@
-# app.py
 import os
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 from services import EmailNotificationService, INotificationService
 from repositories import UserRepository
 
-# --- 1. Inicialización y Configuración ---
+# Inicialización y Configuración
 load_dotenv()
 app = Flask(__name__)
 
-# --- 2. Inyección de Dependencias ---
+# Inyección de Dependencias 
 user_repository = UserRepository(db_path="users.json")
 notification_service: INotificationService = EmailNotificationService()
 
-# --- 3. Endpoints de la API (Comunicación) ---
+# Endpoints de la API 
 @app.route("/health", methods=["GET"])
 def health_check():
     """Endpoint de 'health check' para observabilidad y operación."""
@@ -31,8 +30,7 @@ def recover_password():
 
     email = data["email"]
 
-    # --- Lógica de Negocio Orquestada ---
-    # 1. Buscar usuario (ya no hay paso de CAPTCHA)
+    # 1. Buscar usuario 
     user = user_repository.find_by_email(email)
 
     if user:

@@ -1,4 +1,3 @@
-# repositories.py
 import json
 
 class UserRepository:
@@ -17,5 +16,4 @@ class UserRepository:
                 return users.get(email)
         except (FileNotFoundError, json.JSONDecodeError):
             return None
-        
         

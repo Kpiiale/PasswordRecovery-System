@@ -1,17 +1,15 @@
-# services.py
 import os
 import smtplib
 from email.mime.text import MIMEText
 from abc import ABC, abstractmethod
 
-# --- Interfaz (Clase Abstracta) ---
+#Clase Abstracta
 class INotificationService(ABC):
     """Interfaz para cualquier servicio de notificación."""
     @abstractmethod
     def send_recovery_notification(self, to_email: str, password: str):
         pass
 
-# --- Implementación Concreta ---
 class EmailNotificationService(INotificationService):
     """Implementación del servicio de notificación que envía correos electrónicos."""
     def __init__(self):
