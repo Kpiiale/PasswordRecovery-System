@@ -1,15 +1,13 @@
 # PasswordRecovery-System
 Un microservicio que gestiona el proceso de recuperación de contraseñas de los usuarios.
 
-## Principios de Diseño y Arquitectura
+-  Se enfoca exclusivamente en la recuperación de contraseñas, sin mezclar otras responsabilidades como registro o autenticación.
+-  Utiliza una clase abstracta (`INotificationService`) para definir un contrato de notificación. Esto permite cambiar fácilmente la implementación (por ejemplo, de email a SMS) sin alterar la lógica de negocio principal.
+-   Las dependencias (como el servicio de notificaciones) se "inyectan" en el punto de entrada de la aplicación.
+-  Los datos sensibles (credenciales de correo) se manejan fuera del código fuente, a través de un archivo `.env`\
+-  El servicio gestiona su propio almacén de datos (`users.json`), el cual no debe ser accedido directamente por ningún otro servicio del ecosistema.
 
-Este servicio ha sido desarrollado siguiendo buenas prácticas de arquitectura de software para garantizar que sea robusto, mantenible y escalable:
-
--   **Dominio Único (Single Responsibility Principle):** Se enfoca exclusivamente en la recuperación de contraseñas, sin mezclar otras responsabilidades como registro o autenticación.
--   **Diseño Orientado a Interfaces (Desacoplamiento):** Utiliza una clase abstracta (`INotificationService`) para definir un contrato de notificación. Esto permite cambiar fácilmente la implementación (por ejemplo, de email a SMS) sin alterar la lógica de negocio principal.
--   **Inyección de Dependencias:** Las dependencias (como el servicio de notificaciones) se "inyectan" en el punto de entrada de la aplicación, promoviendo un código desacoplado y más fácil de probar.
--   **Configuración Externa:** Los datos sensibles (credenciales de correo) se manejan fuera del código fuente, a través de un archivo `.env`\
--   **Datos Privados:** El servicio gestiona su propio almacén de datos (`users.json`), el cual no debe ser accedido directamente por ningún otro servicio del ecosistema.
+Esta pensado para ser usado con una base de datos, sin embargo, como prueba se usa un json. 
 
 ---
 
