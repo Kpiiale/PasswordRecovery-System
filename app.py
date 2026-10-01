@@ -40,7 +40,7 @@ def recover_password():
             notification_service.send_recovery_notification(email, password)
         except ConnectionError as e:
             print(f"CRITICAL: El servicio de notificaciones falló. Error: {str(e)}")
-            return jsonify({"error": "No se pudo procesar la solicitud. Intente más tarde."}), 503
+            return jsonify({"error": "No se pudo procesar la solicitud."}), 503
 
     # 3. Respuesta genérica por seguridad
     return jsonify({"message": "Si tu correo está en nuestro sistema, recibirás un email de recuperación."}), 200
